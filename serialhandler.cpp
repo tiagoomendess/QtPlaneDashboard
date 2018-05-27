@@ -12,6 +12,8 @@ SerialHandler::SerialHandler(QObject *parent, QQmlApplicationEngine *engine) : Q
     this->serial_port->setFlowControl(QSerialPort::NoFlowControl);
     this->serial_port->setPortName("COM4");
 
+    this->line = new QString("");
+
     qDebug() << "Contrutor Serial Handler!";
 
     connect(serial_port, SIGNAL(readyRead()), this, SLOT(DataReceived()));
@@ -22,5 +24,15 @@ SerialHandler::SerialHandler(QObject *parent, QQmlApplicationEngine *engine) : Q
 
 void SerialHandler::DataReceived() {
 
-    qDebug() << serial_port->readLine();
+    if (serial_port->canReadLine()) {
+
+        for (int i = 0; i < serial_port->readLine().length(); i++) {
+
+        }
+
+        line = serial_port->readLine();
+
+    }
+
+    qDebug() << line;
 }
