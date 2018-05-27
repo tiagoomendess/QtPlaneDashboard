@@ -3,7 +3,7 @@
 DisplayHandler::DisplayHandler(QObject *parent, QQmlApplicationEngine *engine) : QObject(parent)
 {
 
-    qDebug() << "Contrutor Display Handler!";
+    qDebug() << "Contrutor DisplayHandler!";
 
     this->engine = engine;
 
@@ -12,31 +12,43 @@ DisplayHandler::DisplayHandler(QObject *parent, QQmlApplicationEngine *engine) :
     this->headingText = engine->rootObjects().at(0)->findChild<QObject*>("headingText");
     this->lockedText = engine->rootObjects().at(0)->findChild<QObject*>("lockedText");
     this->angleImage = engine->rootObjects().at(0)->findChild<QObject*>("angleImage");
+    this->temperatureText = engine->rootObjects().at(0)->findChild<QObject*>("temperatureText");
+    this->humidityText = engine->rootObjects().at(0)->findChild<QObject*>("humidityText");
 
 }
 
 void DisplayHandler::setSpeedText(int valor) {
 
-    speedText->setProperty("text", qsTr(valor));
+    speedText->setProperty("text", valor);
 }
 
 
 void DisplayHandler::setAltitudeText(int valor) {
 
-    altitudeText->setProperty("text", qsTr(valor));
+    altitudeText->setProperty("text", valor);
 }
 
 void DisplayHandler::setHeadingText(int valor) {
 
-    headingText->setProperty("text", qsTr(valor));
+    headingText->setProperty("text", valor);
+}
+
+void DisplayHandler::setTemperatureText(int valor) {
+
+    temperatureText->setProperty("text", valor);
+}
+
+void DisplayHandler::setHumidityText(int valor) {
+
+    humidityText->setProperty("text", valor);
 }
 
 void DisplayHandler::setLockedText(bool valor) {
 
     if (valor)
-        lockedText->setProperty("text", qsTr("LCKD"));
+        lockedText->setProperty("text", "LCKD");
     else
-        lockedText->setProperty("text", qsTr(""));
+        lockedText->setProperty("text", "");
 
 }
 

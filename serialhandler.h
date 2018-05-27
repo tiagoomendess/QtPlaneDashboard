@@ -16,9 +16,23 @@ public:
 private:
     QQmlApplicationEngine *engine;
     QSerialPort *serial_port;
-    QString *line;
+    QString line;
+
+    int speed, altitude, temperature, humidity, heading;
+    double pitch, roll;
+    bool locked;
+
+    QStringList lineData;
 
 signals:
+    void pitchChanged(double value);
+    void rollChanged(double value);
+    void headingChanged(int value);
+    void speedChanged(int value);
+    void altitudeChanged(int value);
+    void temperatureChanged(int value);
+    void humidityChanged(int value);
+    void lockedChanged(bool value);
 
 public slots:
     void DataReceived();

@@ -28,6 +28,26 @@ Window {
     }
 
     Text {
+        id: temperature_text
+        x: 505
+        y: 543
+        z: 35
+        color: "lightblue"
+        text: qsTr("0 Cº")
+        font.pixelSize: 28
+    }
+
+    Text {
+        id: humidity_text
+        x: 729
+        y: 543
+        z: 35
+        color: "lightblue"
+        text: qsTr("0%")
+        font.pixelSize: 28
+    }
+
+    Text {
         id: altitude_text
         x: 855
         y: 345
