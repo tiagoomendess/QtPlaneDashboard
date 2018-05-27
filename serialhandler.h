@@ -7,14 +7,17 @@
 #include <QSerialPort>
 #include <QDebug>
 
+#include "displayhandler.h"
+
 class SerialHandler : public QObject
 {
     Q_OBJECT
 public:
-    explicit SerialHandler(QObject *parent = nullptr, QQmlApplicationEngine *engine = nullptr);
+    explicit SerialHandler(QObject *parent = nullptr, QQmlApplicationEngine *engine = nullptr, DisplayHandler *display = nullptr);
 
 private:
     QQmlApplicationEngine *engine;
+    DisplayHandler *display;
     QSerialPort *serial_port;
     QString line;
 

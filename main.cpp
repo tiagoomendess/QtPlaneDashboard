@@ -2,6 +2,7 @@
 #include <QQmlApplicationEngine>
 #include "serialhandler.h"
 #include "displayhandler.h"
+#include <QObject>
 
 int main(int argc, char *argv[])
 {
@@ -14,8 +15,8 @@ int main(int argc, char *argv[])
     if (engine.rootObjects().isEmpty())
         return -1;
 
-    SerialHandler serial(0, &engine);
-    DisplayHandler display(0, &engine);
+    DisplayHandler *display = new DisplayHandler(0, &engine);
+    SerialHandler *serial = new SerialHandler(0, &engine, display);
 
     return app.exec();
 }

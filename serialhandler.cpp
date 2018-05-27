@@ -1,8 +1,9 @@
 #include "serialhandler.h"
 
-SerialHandler::SerialHandler(QObject *parent, QQmlApplicationEngine *engine) : QObject(parent)
+SerialHandler::SerialHandler(QObject *parent, QQmlApplicationEngine *engine, DisplayHandler *display) : QObject(parent)
 {
     this->engine = engine;
+    this->display = display;
 
     this->serial_port = new QSerialPort();
     this->serial_port->setBaudRate(QSerialPort::Baud9600);
@@ -23,7 +24,10 @@ SerialHandler::SerialHandler(QObject *parent, QQmlApplicationEngine *engine) : Q
 
     qDebug() << "Contrutor SerialHandler!";
 
+    //Connects
     connect(serial_port, SIGNAL(readyRead()), this, SLOT(DataReceived()));
+    connect(this, SIGNAL(speedChanged(int)), display, SLOT(setSpeedText(int)));
+    connect(this, SIGNAL(lockedChanged(bool)), display, SLOT(setLockedText(bool)));
 
     this->serial_port->open(QSerialPort::ReadWrite);
 
@@ -93,17 +97,13 @@ void SerialHandler::DataReceived() {
         }
 
         //Get locked
-        if (lineData.at(7).toInt() != locked) {
+        if ((bool)lineData.at(7).toInt() != locked) {
             qDebug() << "Locked Changed";
-            locked = lineData.at(7).toInt();
+            locked = (bool)lineData.at(7).toInt();
             emit this->lockedChanged(locked);
         }
 
-
-
-
     }
-
 
 }
 /*

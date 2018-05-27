@@ -7,13 +7,13 @@ DisplayHandler::DisplayHandler(QObject *parent, QQmlApplicationEngine *engine) :
 
     this->engine = engine;
 
-    this->speedText = engine->rootObjects().at(0)->findChild<QObject*>("speedText");
-    this->altitudeText = engine->rootObjects().at(0)->findChild<QObject*>("altitudeText");
-    this->headingText = engine->rootObjects().at(0)->findChild<QObject*>("headingText");
-    this->lockedText = engine->rootObjects().at(0)->findChild<QObject*>("lockedText");
-    this->angleImage = engine->rootObjects().at(0)->findChild<QObject*>("angleImage");
-    this->temperatureText = engine->rootObjects().at(0)->findChild<QObject*>("temperatureText");
-    this->humidityText = engine->rootObjects().at(0)->findChild<QObject*>("humidityText");
+    this->speedText = this->engine->rootObjects().at(0)->findChild<QObject*>("speed_text");
+    this->altitudeText = this->engine->rootObjects().at(0)->findChild<QObject*>("altitude_text");
+    this->headingText = this->engine->rootObjects().at(0)->findChild<QObject*>("heading_text");
+    this->lockedText = this->engine->rootObjects().at(0)->findChild<QObject*>("locked_text");
+    this->angleImage = this->engine->rootObjects().at(0)->findChild<QObject*>("angle_image");
+    this->temperatureText = this->engine->rootObjects().at(0)->findChild<QObject*>("temperature_text");
+    this->humidityText = this->engine->rootObjects().at(0)->findChild<QObject*>("humidity_text");
 
 }
 
@@ -46,9 +46,9 @@ void DisplayHandler::setHumidityText(int valor) {
 void DisplayHandler::setLockedText(bool valor) {
 
     if (valor)
-        lockedText->setProperty("text", "LCKD");
+        qDebug() << lockedText->setProperty("text", "LCKD");
     else
-        lockedText->setProperty("text", "");
+        qDebug() << lockedText->setProperty("text", "");
 
 }
 
