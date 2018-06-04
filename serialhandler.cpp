@@ -28,6 +28,11 @@ SerialHandler::SerialHandler(QObject *parent, QQmlApplicationEngine *engine, Dis
     connect(serial_port, SIGNAL(readyRead()), this, SLOT(DataReceived()));
     connect(this, SIGNAL(speedChanged(int)), display, SLOT(setSpeedText(int)));
     connect(this, SIGNAL(lockedChanged(bool)), display, SLOT(setLockedText(bool)));
+    connect(this, SIGNAL(altitudeChanged(int)), display, SLOT(setAltitudeText(int)));
+    connect(this, SIGNAL(rollChanged(double)), display, SLOT(setImageAngle(double)));
+    connect(this, SIGNAL(pitchChanged(double)), display, SLOT(setImageDisplacement(double)));
+    connect(this, SIGNAL(temperatureChanged(int)), display, SLOT(setTemperatureText(int)));
+    connect(this, SIGNAL(humidityChanged(int)), display, SLOT(setHumidityText(int)));
 
     this->serial_port->open(QSerialPort::ReadWrite);
 

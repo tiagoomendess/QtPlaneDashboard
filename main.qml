@@ -8,29 +8,32 @@ Window {
     title: qsTr("Trabalho 2")
 
     Text {
+        objectName: "speedText"
         id: speed_text
-        x: 383
-        y: 345
-        z: 31
-        text: qsTr("230")
-        font.pixelSize: 26
+        x: parent.width * 0.29
+        y: parent.height * 0.478
+        z: 32
+        text: qsTr("0")
+        font.pixelSize: parent.width * 0.0195
     }
 
     Text {
+        objectName: "lockedText"
         id: locked_text
-        x: 729
-        y: 147
+        x: parent.width * 0.56
+        y: parent.height * 0.20
         z: 31
         color: "pink"
         text: qsTr("LCKD")
         font.bold: true
-        font.pixelSize: 28
+        font.pixelSize: parent.width * 0.0250
     }
 
     Text {
+        objectName: "temperatureText"
         id: temperature_text
-        x: 505
-        y: 543
+        x: parent.width * 0.39
+        y: parent.height * 0.75
         z: 35
         color: "lightblue"
         text: qsTr("0 Cº")
@@ -38,9 +41,10 @@ Window {
     }
 
     Text {
+        objectName: "humidityText"
         id: humidity_text
-        x: 729
-        y: 543
+        x: parent.width * 0.58
+        y: parent.height * 0.75
         z: 35
         color: "lightblue"
         text: qsTr("0%")
@@ -48,26 +52,31 @@ Window {
     }
 
     Text {
+        objectName: "altitudeText"
         id: altitude_text
-        x: 855
-        y: 345
-        z: 31
-        text: qsTr("230")
-        font.pixelSize: 28
+        x: parent.width * 0.655
+        y: parent.height * 0.478
+        z: 32
+        text: qsTr("00000")
+        font.pixelSize: parent.width * 0.0195
+        horizontalAlignment: AlignRight
+
     }
 
     Text {
+        objectName: "headingText"
         id: heading_text
-        x: 613
-        y: 147
+        x: parent.width * 0.48
+        y: parent.height * 0.20
         z: 31
         color: "green"
         text: qsTr("280")
         font.bold: true
-        font.pixelSize: 28
+        font.pixelSize: parent.width * 0.0250
     }
 
     Image {
+        objectName: "imageLayer1"
         id: layer1
         x: 0
         y: 0
@@ -78,6 +87,7 @@ Window {
     }
 
     Image {
+        objectName: "imageLayer2"
         id: layer2
         x: 0
         y: 0
@@ -88,6 +98,7 @@ Window {
     }
 
     Image {
+        objectName: "imageLayer3"
         id: layer3
         x: 0
         y: 0
