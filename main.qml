@@ -11,7 +11,7 @@ Window {
         objectName: "speedText"
         id: speed_text
         x: parent.width * 0.29
-        y: parent.height * 0.478
+        y: parent.height * 0.476
         z: 32
         text: qsTr("0")
         font.pixelSize: parent.width * 0.0195
@@ -37,7 +37,7 @@ Window {
         z: 35
         color: "lightblue"
         text: qsTr("0 Cº")
-        font.pixelSize: 28
+        font.pixelSize: parent.width * 0.019
     }
 
     Text {
@@ -48,16 +48,16 @@ Window {
         z: 35
         color: "lightblue"
         text: qsTr("0%")
-        font.pixelSize: 28
+        font.pixelSize: parent.width * 0.019
     }
 
     Text {
         objectName: "altitudeText"
         id: altitude_text
         x: parent.width * 0.655
-        y: parent.height * 0.478
+        y: parent.height * 0.476
         z: 32
-        text: qsTr("00000")
+        text: qsTr("0")
         font.pixelSize: parent.width * 0.0195
         horizontalAlignment: AlignRight
 
@@ -105,6 +105,8 @@ Window {
         z: 10
         width: parent.width
         height: parent.height
+
         source: "layer3.png"
+
     }
 }

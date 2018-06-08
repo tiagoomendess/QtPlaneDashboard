@@ -35,12 +35,12 @@ void DisplayHandler::setHeadingText(int valor) {
 
 void DisplayHandler::setTemperatureText(int valor) {
 
-    temperatureText->setProperty("text", valor);
+    temperatureText->setProperty("text", QString::number(valor) + " ºC");
 }
 
 void DisplayHandler::setHumidityText(int valor) {
 
-    humidityText->setProperty("text", valor);
+    humidityText->setProperty("text", QString::number(valor) + "%");
 }
 
 void DisplayHandler::setLockedText(bool valor) {
@@ -53,10 +53,14 @@ void DisplayHandler::setLockedText(bool valor) {
 }
 
 void DisplayHandler::setImageAngle(double roll) {
-    //GG
+    angleImage->setProperty("rotation", roll);
 }
 
 void DisplayHandler::setImageDisplacement(double pitch) {
-    //GG
+
+    if (pitch > 0.2 || pitch < -0.2)
+        angleImage->setProperty("y", pitch *5);
+    else
+        angleImage->setProperty("y", 0);
 }
 

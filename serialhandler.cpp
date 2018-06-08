@@ -46,6 +46,7 @@ void SerialHandler::DataReceived() {
 
         line = QString::fromStdString(arr.toStdString());
         line = line.replace("\r\n", "");
+        qDebug() << line;
         //pitch,roll,heading,speed,altitude,temperature,humidity,locked
         lineData = line.split(",");
 
@@ -54,56 +55,56 @@ void SerialHandler::DataReceived() {
 
         //Get pitch
         if (lineData.at(0).toDouble() != pitch) {
-            qDebug() << "Pitch Changed";
+            //qDebug() << "Pitch Changed";
             pitch = lineData.at(0).toDouble();
             emit this->pitchChanged(pitch);
         }
 
         //Get roll
         if (lineData.at(1).toDouble() != roll) {
-            qDebug() << "Roll Changed";
+            //qDebug() << "Roll Changed";
             roll = lineData.at(1).toDouble();
             emit this->rollChanged(roll);
         }
 
         //Get heading
-        if (lineData.at(2).toInt() != heading) {
-            qDebug() << "Heading Changed";
+        if (lineData.at(2).toDouble() != heading) {
+            //qDebug() << "Heading Changed";
             heading = lineData.at(2).toInt();
             emit this->headingChanged(heading);
         }
 
         //Get speed
-        if (lineData.at(3).toInt() != speed) {
-            qDebug() << "Speed Changed";
-            speed = lineData.at(3).toInt();
+        if (lineData.at(3).toDouble() != speed) {
+            //qDebug() << "Speed Changed";
+            speed = lineData.at(3).toDouble();
             emit this->speedChanged(speed);
         }
 
         //Get altitude
         if (lineData.at(4).toInt() != altitude) {
-            qDebug() << "Altitude Changed";
+            //qDebug() << "Altitude Changed";
             altitude = lineData.at(4).toInt();
             emit this->altitudeChanged(altitude);
         }
 
         //Get temperature
-        if (lineData.at(5).toInt() != temperature) {
-            qDebug() << "Temperature Changed";
-            temperature = lineData.at(5).toInt();
+        if (lineData.at(5).toDouble() != temperature) {
+            //qDebug() << "Temperature Changed";
+            temperature = lineData.at(5).toDouble();
             emit this->temperatureChanged(temperature);
         }
 
         //Get humidity
-        if (lineData.at(6).toInt() != humidity) {
-            qDebug() << "Humidity Changed";
-            humidity = lineData.at(6).toInt();
+        if (lineData.at(6).toDouble() != humidity) {
+            //qDebug() << "Humidity Changed";
+            humidity = lineData.at(6).toDouble();
             emit this->humidityChanged(humidity);
         }
 
         //Get locked
         if ((bool)lineData.at(7).toInt() != locked) {
-            qDebug() << "Locked Changed";
+            //qDebug() << "Locked Changed";
             locked = (bool)lineData.at(7).toInt();
             emit this->lockedChanged(locked);
         }
